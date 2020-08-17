@@ -151,7 +151,7 @@ export default {
   },
   data() {
     return {
-      url: "http://localhost:8080/",
+      url: "",
       selectedPos: "",
       playerObjectList: [],
       selectedPlayer: Object,

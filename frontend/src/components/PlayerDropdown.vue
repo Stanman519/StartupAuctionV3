@@ -151,7 +151,7 @@ export default {
   },
   data() {
     return {
-      url: "",
+      url: "/",
       selectedPos: "",
       playerObjectList: [],
       selectedPlayer: Object,

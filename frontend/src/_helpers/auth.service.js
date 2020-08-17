@@ -3,7 +3,7 @@ import Vue from 'vue'
 import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 
-const API_URL = 'http://localhost:8080/api/';
+const API_URL = '/api/';
 
 class AuthService {
   login(user) {

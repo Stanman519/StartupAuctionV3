@@ -204,30 +204,6 @@ export default {
         return null;
       }
     },
-    nomFormIsValid: function() {
-      return (
-        this.lengthInput > 0 &&
-        this.salaryInput > 0 &&
-        this.salaryInput % 1 === 0 &&
-        this.selectedPlayerId > 0 &&
-        this.nomMode &&
-        (this.salaryInput <= this.currentUser.user.capRoom ||
-          this.salaryInput <= this.currentUser.capRoom) &&
-        (this.lengthInput <= this.currentUser.user.yearsLeft ||
-          this.lengthInput <= this.currentUser.yearsLeft)
-      );
-    },
-    bidFormIsValid: function() {
-      return (
-        this.bidMode &&
-        this.lengthInput > 0 &&
-        this.salaryInput > 0 &&
-        this.salaryInput % 1 === 0 &&
-        this.selectedPlayer.playerId > 0 &&
-        this.bidMode &&
-        this.bidIsLegal
-      );
-    },
     lotIdNum: function() {
       return parseInt(this.lotId);
     },
@@ -266,6 +242,30 @@ export default {
     }
   },
   methods: {
+     nomFormIsValid: function() {
+      return (
+        this.lengthInput > 0 &&
+        this.salaryInput > 0 &&
+        this.salaryInput % 1 === 0 &&
+        this.selectedPlayerId > 0 &&
+        this.nomMode &&
+        (this.salaryInput <= this.currentUser.user.capRoom ||
+          this.salaryInput <= this.currentUser.capRoom) &&
+        (this.lengthInput <= this.currentUser.user.yearsLeft ||
+          this.lengthInput <= this.currentUser.yearsLeft)
+      );
+    },
+    bidFormIsValid: function() {
+      return (
+        this.bidMode &&
+        this.lengthInput > 0 &&
+        this.salaryInput > 0 &&
+        this.salaryInput % 1 === 0 &&
+        this.selectedPlayer.playerId > 0 &&
+        this.bidMode &&
+        this.bidIsLegal
+      );
+    },
     enablePass: function(){
         this.passable = true;
     },
@@ -273,8 +273,6 @@ export default {
       ++this.loaded;
     },
     lookupPlayerByBid: function() {
-      console.log("are we getting here");
-      console.log(this.lotIdNum);
       fetch(this.url + "api/players/" + this.currentBid.playerId, {
         method: "GET"
       })

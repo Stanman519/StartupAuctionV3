@@ -19,8 +19,7 @@
                     <b-col class="seconds col-sm-2"> 
                         <div class="big-num"> {{displaySeconds}} </div>
                     </b-col> -->
-
-                    </div>
+    
                     <b-col class="col-sm-1">
                     </b-col>
                 </b-row>

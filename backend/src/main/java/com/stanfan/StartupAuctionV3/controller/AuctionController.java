@@ -42,7 +42,7 @@ import com.stanfan.StartupAuctionV3.security.jwt.TokenProvider;
 
 
 
-@CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 @RestController
 public class AuctionController {
     private final TokenProvider tokenProvider;

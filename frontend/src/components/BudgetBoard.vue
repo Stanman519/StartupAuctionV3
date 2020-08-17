@@ -10,7 +10,7 @@ export default {
 
     data() {
         return{
-            url: 'http://localhost:8080/',
+            url: '/',
             ownerList: [],
             rows: [
                 {

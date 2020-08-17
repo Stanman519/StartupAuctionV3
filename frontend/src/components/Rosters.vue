@@ -29,7 +29,7 @@ export default {
             ownerList: [],
             playerList: [],
             selectedOwnerName: '',
-            url: 'http://localhost:8080/',
+            url: '/',
             rows: [
                 {
                     key: 'firstName',

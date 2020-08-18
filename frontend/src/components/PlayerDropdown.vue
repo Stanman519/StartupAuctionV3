@@ -231,6 +231,17 @@ export default {
     lotIdNum: function() {
       return parseInt(this.lotId);
     },
+
+    
+  },
+  watch: {
+    passers: function(){
+        if(this.passers.length >= 11 ) {
+            this.winPlayer();
+        }
+    }
+  },
+  methods: {
     getTimeStamp: function() {
       let today = new Date();
       let date =
@@ -245,17 +256,7 @@ export default {
 
       return dateTime;
       //const end = new Date(2020, 6, 17, 18, 10, 10, 10)
-    }
-    
-  },
-  watch: {
-    passers: function(){
-        if(this.passers.length >= 11 ) {
-            this.winPlayer();
-        }
-    }
-  },
-  methods: {
+    },
     bidIsLegal: function() {
       return (
         this.salaryInput + this.lengthInput * 5 >
@@ -365,7 +366,8 @@ export default {
         fetch(this.url + "api/nominate", updateRequestOptions)
         })
          .then(() => {
-        this.$router.go();
+        //this.$router.go();
+        location.reload();
       })
     },
     passOnPlayer: function() {
@@ -428,7 +430,8 @@ export default {
         })
         .then(() => {
           this.engageBidMode();
-          this.$router.go();
+          //this.$router.go();
+          location.reload();
         });
     },
     winPlayer: function() {

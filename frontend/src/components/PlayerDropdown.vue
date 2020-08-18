@@ -179,6 +179,17 @@ export default {
     };
   },
   computed: {
+    currentUser: function() {
+      if (this.$store.state.auth.user) {
+        return this.$store.state.auth.user;
+      } 
+      else if (this.jwtUser.user) {
+        return this.jwtUser;
+      }
+      else {
+        return null;
+      }
+    },
     passes: function() {
         if(this.passers){
             return this.passers.length;
@@ -246,17 +257,6 @@ export default {
     }
   },
   methods: {
-    currentUser: function() {
-      if (this.$store.state.auth.user) {
-        return this.$store.state.auth.user;
-      } 
-      else if (this.jwtUser.user) {
-        return this.jwtUser;
-      }
-      else {
-        return null;
-      }
-    },
     bidIsLegal: function() {
       return (
         this.salaryInput + this.lengthInput * 5 >

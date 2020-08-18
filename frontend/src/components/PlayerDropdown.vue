@@ -194,6 +194,19 @@ export default {
         }
         return false;
     },
+    nomFormIsValid: function() {
+      return (
+        this.lengthInput > 0 &&
+        this.salaryInput > 0 &&
+        this.salaryInput % 1 === 0 &&
+        this.selectedPlayerId > 0 &&
+        this.nomMode &&
+        (this.salaryInput <= this.currentUser.capRoom ||
+          this.salaryInput <= this.currentUser.capRoom) &&
+        (this.lengthInput <= this.currentUser.yearsLeft ||
+          this.lengthInput <= this.currentUser.yearsLeft)
+      )
+    },
     bidFormIsValid: function() {
       return (
         this.bidMode &&
@@ -215,9 +228,8 @@ export default {
         today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
       let time =
         today.getHours() +
-        8 +
         "," +
-        today.getMinutes() +
+        today.getMinutes() + 1
         "," +
         today.getSeconds();
       let dateTime = date + "," + time + ",10";
@@ -235,24 +247,11 @@ export default {
     }
   },
   methods: {
-        nomFormIsValid: function() {
-      return (
-        this.lengthInput > 0 &&
-        this.salaryInput > 0 &&
-        this.salaryInput % 1 === 0 &&
-        this.selectedPlayerId > 0 &&
-        this.nomMode &&
-        (this.salaryInput <= this.currentUser.capRoom ||
-          this.salaryInput <= this.currentUser.capRoom) &&
-        (this.lengthInput <= this.currentUser.yearsLeft ||
-          this.lengthInput <= this.currentUser.yearsLeft)
-      )
-    },
     currentUser: function() {
       if (this.$store.state.auth.user) {
         return this.$store.state.auth.user;
       } 
-      if (this.jwtUser.user) {
+      else if (this.jwtUser.user) {
         return this.jwtUser.user;
       }
       else {
@@ -350,7 +349,7 @@ export default {
           espnId: this.selectedPlayer.espnId
         })
       };
-      Promise.all(
+
         fetch(this.url + "api/nominate", requestOptions)
           .then(response => {
             return response.json();
@@ -361,9 +360,11 @@ export default {
             this.splitTimeString();
             this.callForTimer();
             this.lotCleanup();
-          }),
+          })
+          .then(() => {
         fetch(this.url + "api/nominate", updateRequestOptions)
-      ).then(() => {
+          })
+          .then(() => {
         this.$router.go();
       });
     },

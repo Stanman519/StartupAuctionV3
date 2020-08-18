@@ -201,9 +201,9 @@ export default {
         this.salaryInput % 1 === 0 &&
         this.selectedPlayerId > 0 &&
         this.nomMode &&
-        (this.salaryInput <= this.currentUser.capRoom ||
+        (this.salaryInput <= this.currentUser.user.capRoom ||
           this.salaryInput <= this.currentUser.capRoom) &&
-        (this.lengthInput <= this.currentUser.yearsLeft ||
+        (this.lengthInput <= this.currentUser.user.yearsLeft ||
           this.lengthInput <= this.currentUser.yearsLeft)
       )
     },
@@ -214,7 +214,6 @@ export default {
         this.salaryInput > 0 &&
         this.salaryInput % 1 === 0 &&
         this.selectedPlayer.playerId > 0 &&
-        this.bidMode &&
         this.bidIsLegal
       )
     },

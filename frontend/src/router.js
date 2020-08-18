@@ -17,12 +17,8 @@ export const router = new Router({
       component: Home
     },
     {
-      path: '/error',
-      name: 'home',
-      component: Home
-    },
-    {
       path: '/home',
+      name: 'home',
       component: Home
     },
     {

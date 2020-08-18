@@ -9,20 +9,6 @@
                         <div class="big-num">{{displayHours}}:{{displayMinutes}}:{{displaySeconds}} </div>
                         <!-- <div class="clock-label">hours</div> -->
                     </b-col>
-<<<<<<< HEAD
-<!-- 
-                    <b-col class="minutes col-sm-2">
-                       <div class="big-num"> {{displayMinutes}}: </div>
-
-                    </b-col>
-
-                    <div>
-                    <b-col class="seconds col-sm-2"> 
-                        <div class="big-num"> {{displaySeconds}} </div>
-                    </b-col> -->
-    
-=======
->>>>>>> 7b0c968a396344541a31b8207e1eef6f2151542a
                     <b-col class="col-sm-1">
                     </b-col>
                 </b-row>

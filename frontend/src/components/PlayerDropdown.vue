@@ -228,7 +228,7 @@ export default {
       let time =
         today.getHours() +
         "," +
-        today.getMinutes() + 1
+        today.getMinutes() + 1 +
         "," +
         today.getSeconds();
       let dateTime = date + "," + time + ",10";
@@ -251,7 +251,7 @@ export default {
         return this.$store.state.auth.user;
       } 
       else if (this.jwtUser.user) {
-        return this.jwtUser.user;
+        return this.jwtUser;
       }
       else {
         return null;
@@ -362,10 +362,10 @@ export default {
           })
           .then(() => {
         fetch(this.url + "api/nominate", updateRequestOptions)
-          })
-          .then(() => {
+        })
+         .then(() => {
         this.$router.go();
-      });
+      })
     },
     passOnPlayer: function() {
       const requestOptions = {

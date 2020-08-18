@@ -88,30 +88,7 @@ export default {
     Counter
   },
   props: ["lotId", "ownerList"],
-  created: function() {
-    if (!this.$store.state.auth.user) {
-      const requestOptions = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${this.$cookies.get("token")}`
-        }
-      };
-      fetch(this.url + "api/owner/persist", requestOptions)
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          this.jwtUser.user = data;
-          this.$store.commit("SAVE_USER", this.jwtUser);
-        })
-        .then(() => {
-          if (!this.currentUser) {
-            this.$router.push("/login");
-          }
-        });
-    }
-  },
+  
   mounted: function() {
     fetch(this.url + "api/lot/" + this.lotIdNum, {
       method: "GET"

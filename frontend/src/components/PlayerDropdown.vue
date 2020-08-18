@@ -245,11 +245,11 @@ export default {
     getTimeStamp: function() {
       let today = new Date();
       let date =
-        today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
+      today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
       let time =
         today.getHours() +
         "," +
-        today.getMinutes() + 1 +
+        (today.getMinutes() + 1) +
         "," +
         today.getSeconds();
       let dateTime = date + "," + time + ",10";

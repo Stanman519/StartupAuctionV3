@@ -17,16 +17,13 @@ export const router = new Router({
       component: Home
     },
     {
-      path: '/error',
+      path: '/home',
       name: 'home',
       component: Home
     },
     {
-      path: '/home',
-      component: Home
-    },
-    {
       path: '/rosters',
+      name: 'rosters',
       component: Rosters
     },
     {

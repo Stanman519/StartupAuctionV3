@@ -194,16 +194,6 @@ export default {
         }
         return false;
     },
-    currentUser: function() {
-      if (this.jwtUser.user) {
-        return this.jwtUser;
-      }
-      if (this.$store.state.auth.user) {
-        return this.$store.state.auth.user;
-      } else {
-        return null;
-      }
-    },
     nomFormIsValid: function() {
       return (
         this.lengthInput > 0 &&
@@ -237,9 +227,8 @@ export default {
         today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
       let time =
         today.getHours() +
-        8 +
         "," +
-        today.getMinutes() +
+        today.getMinutes() + 1 +
         "," +
         today.getSeconds();
       let dateTime = date + "," + time + ",10";
@@ -266,6 +255,16 @@ export default {
     }
   },
   methods: {
+    currentUser: function() {
+      if (this.$store.state.auth.user) {
+        return this.$store.state.auth.user;
+      }
+      else if (this.jwtUser.user) {
+        return this.jwtUser;
+      } else {
+        return null;
+      }
+    },
     enablePass: function(){
         this.passable = true;
     },
@@ -349,7 +348,7 @@ export default {
           espnId: this.selectedPlayer.espnId
         })
       };
-      Promise.all(
+
         fetch(this.url + "api/nominate", requestOptions)
           .then(response => {
             return response.json();
@@ -360,11 +359,13 @@ export default {
             this.splitTimeString();
             this.callForTimer();
             this.lotCleanup();
-          }),
+          })
+          .then(() => {
         fetch(this.url + "api/nominate", updateRequestOptions)
-      ).then(() => {
+        })
+         .then(() => {
         this.$router.go();
-      });
+      })
     },
     passOnPlayer: function() {
       const requestOptions = {

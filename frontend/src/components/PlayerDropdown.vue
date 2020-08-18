@@ -231,6 +231,21 @@ export default {
     lotIdNum: function() {
       return parseInt(this.lotId);
     },
+        getTimeStamp: function() {
+      let today = new Date();
+      let date =
+      today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
+      let time =
+        today.getHours() +
+        "," +
+        (today.getMinutes() + 2) +
+        "," +
+        today.getSeconds();
+      let dateTime = date + "," + time + ",10";
+
+      return dateTime;
+      //const end = new Date(2020, 6, 17, 18, 10, 10, 10)
+    }
 
     
   },
@@ -242,21 +257,7 @@ export default {
     }
   },
   methods: {
-    getTimeStamp: function() {
-      let today = new Date();
-      let date =
-      today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
-      let time =
-        today.getHours() +
-        "," +
-        (today.getMinutes() + 1) +
-        "," +
-        today.getSeconds();
-      let dateTime = date + "," + time + ",10";
 
-      return dateTime;
-      //const end = new Date(2020, 6, 17, 18, 10, 10, 10)
-    },
     bidIsLegal: function() {
       return (
         this.salaryInput + this.lengthInput * 5 >

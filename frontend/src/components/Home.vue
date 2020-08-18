@@ -43,7 +43,8 @@ export default {
         user: new User('', ''),
         wins: 0,
         owners: [],
-        content: ''
+        content: '',
+        url: '/'
       }
     },
     created: function() {

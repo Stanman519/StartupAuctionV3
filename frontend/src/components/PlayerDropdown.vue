@@ -205,19 +205,7 @@ export default {
         this.bidIsLegal
       )
     },
-    nomFormIsValid: function() {
-      return (
-        this.lengthInput > 0 &&
-        this.salaryInput > 0 &&
-        this.salaryInput % 1 === 0 &&
-        this.selectedPlayerId > 0 &&
-        this.nomMode &&
-        (this.salaryInput <= this.currentUser.capRoom ||
-          this.salaryInput <= this.currentUser.capRoom) &&
-        (this.lengthInput <= this.currentUser.yearsLeft ||
-          this.lengthInput <= this.currentUser.yearsLeft)
-      )
-    },
+
     lotIdNum: function() {
       return parseInt(this.lotId);
     },
@@ -247,6 +235,19 @@ export default {
     }
   },
   methods: {
+        nomFormIsValid: function() {
+      return (
+        this.lengthInput > 0 &&
+        this.salaryInput > 0 &&
+        this.salaryInput % 1 === 0 &&
+        this.selectedPlayerId > 0 &&
+        this.nomMode &&
+        (this.salaryInput <= this.currentUser.capRoom ||
+          this.salaryInput <= this.currentUser.capRoom) &&
+        (this.lengthInput <= this.currentUser.yearsLeft ||
+          this.lengthInput <= this.currentUser.yearsLeft)
+      )
+    },
     currentUser: function() {
       if (this.$store.state.auth.user) {
         return this.$store.state.auth.user;

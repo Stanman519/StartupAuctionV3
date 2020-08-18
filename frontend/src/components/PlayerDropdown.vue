@@ -298,6 +298,8 @@ export default {
         .then(data => (this.selectedPlayer = data));
     },
     lookupPos: function() {
+      console.log(this.currentUser.user.ownerName);
+      console.log(this.currentUser.user.capRoom);
       fetch(this.url + "api/position/" + this.selectedPos, {
         method: "get"
       })

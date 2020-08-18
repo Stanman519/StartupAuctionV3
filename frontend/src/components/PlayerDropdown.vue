@@ -194,16 +194,7 @@ export default {
         }
         return false;
     },
-    currentUser: function() {
-      if (this.jwtUser.user) {
-        return this.jwtUser;
-      }
-      if (this.$store.state.auth.user) {
-        return this.$store.state.auth.user;
-      } else {
-        return null;
-      }
-    },
+    
     lotIdNum: function() {
       return parseInt(this.lotId);
     },
@@ -222,17 +213,8 @@ export default {
 
       return dateTime;
       //const end = new Date(2020, 6, 17, 18, 10, 10, 10)
-    },
-    bidIsLegal: function() {
-      return (
-        this.salaryInput + this.lengthInput * 5 >
-          this.currentBid.bidSalary + this.currentBid.bidLength * 5 &&
-        this.currentUser.user.capRoom >= this.salaryInput &&
-        this.currentUser.user.yearsLeft >= this.lengthInput &&
-        this.salaryInput <= this.currentUser.user.capRoom &&
-        this.lengthInput <= this.currentUser.user.yearsLeft
-      );
     }
+    
   },
   watch: {
     passers: function(){
@@ -242,6 +224,16 @@ export default {
     }
   },
   methods: {
+    currentUser: function() {
+      if (this.jwtUser.user) {
+        return this.jwtUser;
+      }
+      if (this.$store.state.auth.user) {
+        return this.$store.state.auth.user;
+      } else {
+        return null;
+      }
+    },
      nomFormIsValid: function() {
       return (
         this.lengthInput > 0 &&
@@ -253,7 +245,17 @@ export default {
           this.salaryInput <= this.currentUser.capRoom) &&
         (this.lengthInput <= this.currentUser.user.yearsLeft ||
           this.lengthInput <= this.currentUser.yearsLeft)
-      );
+      )
+    },
+    bidIsLegal: function() {
+      return (
+        this.salaryInput + this.lengthInput * 5 >
+          this.currentBid.bidSalary + this.currentBid.bidLength * 5 &&
+        this.currentUser.user.capRoom >= this.salaryInput &&
+        this.currentUser.user.yearsLeft >= this.lengthInput &&
+        this.salaryInput <= this.currentUser.user.capRoom &&
+        this.lengthInput <= this.currentUser.user.yearsLeft
+      )
     },
     bidFormIsValid: function() {
       return (
@@ -264,7 +266,7 @@ export default {
         this.selectedPlayer.playerId > 0 &&
         this.bidMode &&
         this.bidIsLegal
-      );
+      )
     },
     enablePass: function(){
         this.passable = true;

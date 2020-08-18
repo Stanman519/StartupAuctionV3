@@ -88,6 +88,17 @@ export default {
            })
             .then(response => response.json())
             .then(data => (this.ownerList = data));
+        },
+        currentUser: function() {
+            if (this.$store.state.auth.user){
+                return this.$store.state.auth.user;
+            }
+            if (this.$store.state.jwtUser.user){
+                return this.$store.state.jwtUser.user;
+            }
+             else {
+                return null;
+            }
         }
     },
     mounted: function() {
@@ -95,16 +106,7 @@ export default {
         this.getOwnerList();
     },
     computed: {
-        currentUser: function() {
-            if (this.$store.state.jwtUser.user){
-                return this.$store.state.jwtUser.user;
-            }
-            if (this.$store.state.auth.user){
-                return this.$store.state.auth.user;
-            } else {
-                return null;
-            }
-        }
+        
     }
 }
 

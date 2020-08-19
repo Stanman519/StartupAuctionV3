@@ -195,7 +195,7 @@ export default {
     lotIdNum: function() {
       return parseInt(this.lotId);
     },
-        getTimeStamp: function() {
+    getTimeStamp: function() {
       let today = new Date();
       let date =
       today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
@@ -209,6 +209,16 @@ export default {
 
       return dateTime;
       //const end = new Date(2020, 6, 17, 18, 10, 10, 10)
+    },
+    bidIsLegal: function() {
+      return (
+        this.salaryInput + (this.lengthInput * 5) >
+        this.currentBid.bidSalary + (this.currentBid.bidLength * 5) &&
+        this.currentUser.user.capRoom >= this.salaryInput &&
+        this.currentUser.user.yearsLeft >= this.lengthInput &&
+        this.salaryInput <= this.currentUser.user.capRoom &&
+        this.lengthInput <= this.currentUser.user.yearsLeft
+      )
     }
 
     
@@ -222,16 +232,7 @@ export default {
   },
   methods: {
 
-    bidIsLegal: function() {
-      return (
-        this.salaryInput + this.lengthInput * 5 >
-        this.currentBid.bidSalary + this.currentBid.bidLength * 5 &&
-        this.currentUser.user.capRoom >= this.salaryInput &&
-        this.currentUser.user.yearsLeft >= this.lengthInput &&
-        this.salaryInput <= this.currentUser.user.capRoom &&
-        this.lengthInput <= this.currentUser.user.yearsLeft
-      )
-    },
+    
     enablePass: function(){
         this.passable = true;
     },

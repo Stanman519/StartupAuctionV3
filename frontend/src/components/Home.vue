@@ -139,7 +139,7 @@ export default {
           this.$store.commit("SAVE_USER", this.jwtUser);
         })
         .then(() => {
-          if (!this.currentUser) {
+          if (!this.currentUser.user) {
             this.$router.push("/login");
           }
         });

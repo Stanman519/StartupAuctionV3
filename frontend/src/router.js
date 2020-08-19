@@ -9,7 +9,7 @@ import Rosters from './components/Rosters.vue';
 Vue.use(Router);
 
 export const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -34,6 +34,7 @@ export const router = new Router({
       path: '/register',
       component: Register
     },
+    { path: '*', redirect: '/' }
     // {
     //   path: '/profile',
     //   name: 'profile',

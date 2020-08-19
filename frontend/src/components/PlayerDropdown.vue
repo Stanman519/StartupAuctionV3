@@ -87,7 +87,7 @@ export default {
   components: {
     Counter
   },
-  props: ["lotId", "ownerList"],
+  props: ["lotId", "ownerList", "currentUser"],
   
   mounted: function() {
     fetch(this.url + "api/lot/" + this.lotIdNum, {
@@ -148,25 +148,12 @@ export default {
       bidMillisecond: 0,
       loaded: 0,
       localOwnerList: [],
-      jwtUser: {
-        user: {}
-      },
       passable: false,
       passers: []
     };
   },
   computed: {
-    currentUser: function() {
-      if (this.$store.state.auth.user) {
-        return this.$store.state.auth.user;
-      } 
-      else if (this.jwtUser.user) {
-        return this.jwtUser;
-      }
-      else {
-        return null;
-      }
-    },
+
     passes: function() {
         if(this.passers){
             return this.passers.length;
@@ -177,7 +164,7 @@ export default {
         return this.passable && !this.userHasPassed;
     },
     userHasPassed: function(){
-        if(this.passers.includes(this.jwtUser.user.ownerName)){
+        if(this.passers.includes(this.currentUser.user.ownerName)){
             return true;
         }
         return false;
@@ -238,7 +225,7 @@ export default {
     bidIsLegal: function() {
       return (
         this.salaryInput + this.lengthInput * 5 >
-          this.currentBid.bidSalary + this.currentBid.bidLength * 5 &&
+        this.currentBid.bidSalary + this.currentBid.bidLength * 5 &&
         this.currentUser.user.capRoom >= this.salaryInput &&
         this.currentUser.user.yearsLeft >= this.lengthInput &&
         this.salaryInput <= this.currentUser.user.capRoom &&

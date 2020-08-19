@@ -161,7 +161,7 @@ export default {
         return 0;
     },
     iCanPass: function(){
-        return this.passable && !this.userHasPassed;
+        return this.passable && !this.userHasPassed && (this.currentOwner.ownerName != this.currentUser.user.ownerName);
     },
     userHasPassed: function(){
         if(this.passers.includes(this.currentUser.user.ownerName)){
@@ -200,9 +200,9 @@ export default {
       let date =
       today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
       let time =
-        today.getHours() +
+        (today.getHours() + 8) +
         "," +
-        (today.getMinutes() + 2) +
+        today.getMinutes() +
         "," +
         today.getSeconds();
       let dateTime = date + "," + time + ",10";

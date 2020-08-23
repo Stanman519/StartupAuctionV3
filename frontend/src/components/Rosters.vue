@@ -108,7 +108,7 @@ export default {
     },
     computed: {
         rosterSize: function(){
-            return this.playerList.length();
+            return this.playerList.length;
         }
     }
 }

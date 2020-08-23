@@ -24,7 +24,7 @@
                     </b-col>
                 </b-row>
                 <b-row>
-                    <p>  </p>
+                    <p> Contract Value: {{ newBidCV }}/{{ highestBidCV }}  </p>
                 </b-row>
                 <b-row>
                     <p>  </p>
@@ -153,7 +153,12 @@ export default {
     };
   },
   computed: {
-
+    highestBidCV: function() {
+      return this.currentBid.bidSalary + (this.currentBid.bidLength * 5);
+    },
+    newBidCV: function(){
+      return this.salaryInput + (this.lengthInput * 5);
+    },
     passes: function() {
         if(this.passers){
             return this.passers.length;

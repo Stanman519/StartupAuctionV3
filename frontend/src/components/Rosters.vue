@@ -3,7 +3,8 @@
     <b-container fluid class="table-page">
         <div>
           <b-container fluid class="team-select-row">
-            <span> Select another team: &nbsp; &nbsp; </span>
+            <span> Select another team: &nbsp; &nbsp; </span>   
+            <span> Players on roster: {{ rosterSize }} / 25 </span>
             <b-form-select class="col-sm-4" id="ownerSelector" v-model="selectedOwnerName" @change="showARoster">
                 <b-form-select-option v-for="owner in ownerList" :key="owner.ownerId" :value="owner.ownerName"> 
                     {{ owner.ownerName }} </b-form-select-option>
@@ -106,7 +107,9 @@ export default {
         this.getOwnerList();
     },
     computed: {
-        
+        rosterSize: function(){
+            return this.playerList.length();
+        }
     }
 }
 

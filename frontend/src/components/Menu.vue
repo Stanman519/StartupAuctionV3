@@ -19,7 +19,7 @@
 
            <b-nav-item><router-link to="/login">Log in</router-link></b-nav-item>
 
-          <b-nav-item><router-link to="/register">Register</router-link></b-nav-item>
+          <b-nav-item><router-link to="/notes">Information</router-link></b-nav-item>
 
 
       </b-navbar-nav>

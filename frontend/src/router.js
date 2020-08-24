@@ -4,7 +4,7 @@ import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import Home from './components/Home.vue';
 import Rosters from './components/Rosters.vue';
-
+import Notes from './components/Notes.vue';
 
 Vue.use(Router);
 
@@ -33,6 +33,10 @@ export const router = new Router({
     {
       path: '/register',
       component: Register
+    },
+    {
+      path: '/notes',
+      component: Notes
     },
     { path: '*', redirect: '/' }
     // {

@@ -16,6 +16,9 @@
             <b-table striped hover :items="playerList" :fields="rows">
             </b-table>
         </div>
+        <div>
+            Total Salary: {{ salaryTotal }}
+        </div>
     </b-container>
   </div>
 </template>
@@ -110,6 +113,13 @@ export default {
     computed: {
         rosterSize: function(){
             return this.playerList.length;
+        },
+        salaryTotal: function(){
+            let x = 0;
+            this.playerList.forEach((player) => {
+                x += player.salary
+            })
+            return x;
         }
     }
 }

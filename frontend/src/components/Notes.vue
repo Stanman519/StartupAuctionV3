@@ -69,6 +69,7 @@
             <li> Try to nominate players with legitimate bids.  With these long clocks, it is a waste of time to nominate Christian McCaffery with 5 years, $10.
                  Offer as though you are giving them a legitimate offer.  No need to bid up from the minimum every time.  </li>
             <li> REFRESH THE PAGE BEFORE YOU BID.  The app already checks if you bid is better than the last one but try to minimize errors by making sure your page is up to date. </li>
+            <li> If you pass, you cannot unpass. You will not be able to bid on that player again. </li>
             <li> Sorry if it breaks or if things go haywire.  We gave it a shot. </li>
         </ol>
     </div>

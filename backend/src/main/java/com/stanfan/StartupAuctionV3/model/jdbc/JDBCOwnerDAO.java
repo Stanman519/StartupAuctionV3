@@ -48,12 +48,22 @@ public class JDBCOwnerDAO implements OwnerDAO {
 		}
 		return o;
 	}
+	
+	//change this because the way wins take place... search db for players where ownername = ?, then add up those salaries and lengths. set owner to those values.
 	@Override
 	public void updateInfoAfterWin(Bid bid) {
-		int salary = bid.getBidSalary();
-		int length = bid.getBidLength();
+		int salary = 0;
+		int length = 0;
 		String ownername = bid.getBidder();
-		String sqlPostWin = "UPDATE owner SET caproom = (caproom - ?), yearsleft = (yearsleft - ?) WHERE ownername = ?";
+		
+		String sqlMoneyYears = "SELECT salary, length FROM player WHERE ownername = ?";
+		SqlRowSet budgetResult = jdbcTemplate.queryForRowSet(sqlMoneyYears, ownername);
+		
+		while(budgetResult.next()) {
+			salary += budgetResult.getInt("salary");
+			length += budgetResult.getInt("length");
+		}
+		String sqlPostWin = "UPDATE owner SET caproom = (500 - ?), yearsleft = (75 - ?) WHERE ownername = ?";
 		jdbcTemplate.update(sqlPostWin, salary, length, ownername);
 	}
 	@Override

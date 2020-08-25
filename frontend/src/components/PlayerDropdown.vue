@@ -420,7 +420,6 @@ export default {
           expires: this.getTimeStamp
         })
       };
-      fetch(this.url + "api/win/player", requestOptions);
       const secondRequestOption = {
         method: "PUT",
         headers: {
@@ -435,23 +434,25 @@ export default {
           expires: this.getTimeStamp
         })
       };
-      fetch(this.url + "api/win/owner", secondRequestOption).then(() => {
-        const thirdRequestOption = {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          }
-        };
-        fetch(
-          this.url + "api/lot/clear/" + this.lotId,
-          thirdRequestOption
-        ).then(() => {
-          this.selectedPos = "";
-          this.selectedPlayer = "";
-          this.bidMode = false;
-          this.nomMode = true;
-          this.$emit("newWinner");
-        });
+      fetch(this.url + "api/win/player", requestOptions).then(() =>{
+        fetch(this.url + "api/win/owner", secondRequestOption).then(() => {
+          const thirdRequestOption = {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json"
+            }
+          };
+          fetch(
+            this.url + "api/lot/clear/" + this.lotId,
+            thirdRequestOption
+          ).then(() => {
+            this.selectedPos = "";
+            this.selectedPlayer = "";
+            this.bidMode = false;
+            this.nomMode = true;
+            this.$emit("newWinner");
+          });
+          });
       });
       // add player to team, put null in the lot, change player to have this owner, salary and years
     },

@@ -203,13 +203,13 @@ export default {
     getTimeStamp: function() {
       let today = new Date();
       let date =
-      today.getFullYear() + "," + today.getMonth() + "," + today.getDate();
+      today.getFullYear() + "," + today.getUTCMonth() + "," + today.getUTCDate();
       let time =
-        (today.getHours() + 8) +
+        (today.getUTCHours() + 8) +
         "," +
-        today.getMinutes() +
+        today.getUTCMinutes() +
         "," +
-        today.getSeconds();
+        today.getUTCSeconds();
       let dateTime = date + "," + time + ",10";
 
       return dateTime;

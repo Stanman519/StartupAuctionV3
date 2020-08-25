@@ -1,7 +1,7 @@
 <template>
   <div id="lot-element">
       <div id="watermark"> 
-          <strong> Lot {{ lotId }}</strong> 
+          <strong>  Lot {{ lotId }} - nominator: {{ nommer }} </strong> 
       </div>
     <form>
         <div id="playerInfoBanner" v-show="bidMode"> 
@@ -87,7 +87,7 @@ export default {
   components: {
     Counter
   },
-  props: ["lotId", "ownerList", "currentUser"],
+  props: ["lotId", "ownerList", "currentUser", "nommer"],
   
   mounted: function() {
     fetch(this.url + "api/lot/" + this.lotIdNum, {
@@ -166,7 +166,7 @@ export default {
         return 0;
     },
     iCanPass: function(){
-        return this.passable && !this.userHasPassed && (this.currentOwner.ownerName != this.currentUser.user.ownerName);
+        return this.passable && !this.userHasPassed &&  this.selectedPlayer.playerId > 0 && (this.currentOwner.ownerName != this.currentUser.user.ownerName);
     },
     userHasPassed: function(){
         if(this.passers.includes(this.currentUser.user.ownerName)){

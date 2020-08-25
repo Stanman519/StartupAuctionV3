@@ -6,6 +6,7 @@
       </div>
       <BudgetBoard @newWinner="checkScore" :showScore="wins" id="budget-board"></BudgetBoard>
       <PlayerDropdown
+        nommer="A.Aron"
         lotId="1"
         class="lotStyle"
         id="lot1"
@@ -13,6 +14,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Caleb"
         lotId="2"
         class="lotStyle"
         id="lot2"
@@ -20,6 +22,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Cory"
         lotId="3"
         class="lotStyle"
         id="lot3"
@@ -27,6 +30,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Jeri"
         lotId="4"
         class="lotStyle"
         id="lot4"
@@ -34,6 +38,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Juan"
         lotId="5"
         class="lotStyle"
         id="lot5"
@@ -41,6 +46,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Levi"
         lotId="6"
         class="lotStyle"
         id="lot6"
@@ -48,6 +54,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Logan"
         lotId="7"
         class="lotStyle"
         id="lot7"
@@ -55,6 +62,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Ryan"
         lotId="8"
         class="lotStyle"
         id="lot8"
@@ -62,6 +70,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Taylor"
         lotId="9"
         class="lotStyle"
         id="lot9"
@@ -69,6 +78,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="Trent"
         lotId="10"
         class="lotStyle"
         id="lot10"
@@ -76,6 +86,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="TBux"
         lotId="11"
         class="lotStyle"
         id="lot11"
@@ -83,6 +94,7 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
+        nommer="TWelsh"
         lotId="12"
         class="lotStyle"
         id="lot12"

@@ -62,8 +62,11 @@ export default {
         showRemaining(){
             const timer = setInterval(() => {
                 const now = new Date();
-                //const end = new Date(2020, 6, 17, 18, 10, 10, 10);
-                const distance = this.end.getTime() - now.getTime();
+                let utcDate = new Date(
+                    now.getFullYear(), now.getUTCMonth(), now.getUTCDate(),
+                        now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), 10);
+
+                const distance = this.end.getTime() - utcDate.getTime();
 
                 if(distance < 0) {
                     clearInterval(timer);

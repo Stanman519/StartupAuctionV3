@@ -27,7 +27,7 @@
                     <p> Contract Value: {{ newBidCV }}/{{ highestBidCV }}  </p>
                 </b-row>
                 <b-row>
-                    <p>  </p>
+                    <p> Passes: {{ passes }}/11 </p>
                 </b-row>
             </b-container>
         </div>
@@ -67,8 +67,8 @@
         
         <b-container>
             <b-row id="button-row">
-                    <b-button variant="outline-primary" v-bind:disabled="!nomFormIsValid" @click="submitNomination">Nominate</b-button>
-                    <b-button variant="danger" v-bind:disabled="!bidFormIsValid" @click="submitBid">Bid</b-button>
+                    <b-button v-show="!userHasPassed" variant="outline-primary" v-bind:disabled="!nomFormIsValid" @click="submitNomination">Nominate</b-button>
+                    <b-button v-show="!userHasPassed" variant="danger" v-bind:disabled="!bidFormIsValid" @click="submitBid">Bid</b-button>
                     <b-button v-show="!userHasPassed" v-bind:disabled="!iCanPass" @click="passOnPlayer">Pass</b-button>
             </b-row>
         </b-container>

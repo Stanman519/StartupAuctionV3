@@ -160,10 +160,13 @@ export default {
   mounted:{
     inactivity: function() {
             // now 'this' is referencing the Vue object and not the 'setTimeout' scope
-        setTimeout(() => this.$router.push("/rosters"), 5000);
+        setTimeout(() => this.pushToRoster, 5000);
     }
   },
   methods: {
+    pushToRoster: function() {
+      this.$router.push("/rosters");
+    },
     checkScore: function () {
       this.wins++;
     },

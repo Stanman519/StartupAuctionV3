@@ -28,6 +28,7 @@ import com.stanfan.StartupAuctionV3.model.IllegalBidException;
 import com.stanfan.StartupAuctionV3.model.LoginDTO;
 import com.stanfan.StartupAuctionV3.model.Lot;
 import com.stanfan.StartupAuctionV3.model.LotDAO;
+import com.stanfan.StartupAuctionV3.model.NotAWinnerException;
 import com.stanfan.StartupAuctionV3.model.Owner;
 import com.stanfan.StartupAuctionV3.model.OwnerDAO;
 import com.stanfan.StartupAuctionV3.model.Pass;
@@ -143,11 +144,11 @@ public class AuctionController {
 		return bidDAO.getBidById(bidId);
 	}
 	
-	//add owner to player when lot is won
-	@RequestMapping(path = "/api/win/player/", method = RequestMethod.PUT)
-	public void winAuction(@RequestBody @PathVariable int playerid, Owner winningOwner) {
-		playerDAO.addOwnerToPlayer(playerid, winningOwner.getOwnerId());
-	}
+//	//add owner to player when lot is won
+//	@RequestMapping(path = "/api/win/player/", method = RequestMethod.PUT)
+//	public void winAuction(@RequestBody @PathVariable int playerid, Owner winningOwner) {
+//		playerDAO.addOwnerToPlayer(playerid, winningOwner.getOwnerId());
+//	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@RequestMapping(path = "/api/nominate", method = RequestMethod.PUT)
@@ -158,7 +159,11 @@ public class AuctionController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@RequestMapping(path = "/api/win/player", method = RequestMethod.PUT)
 	public void updatePlayerAfterWin(@RequestBody Bid bid) {
-		playerDAO.addInfoAfterWin(bid);
+		try{
+			playerDAO.addInfoAfterWin(bid);
+		} catch (NotAWinnerException e) {
+			throw e;
+		}
 	}
 
 	@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")

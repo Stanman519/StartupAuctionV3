@@ -10,6 +10,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
 import com.stanfan.StartupAuctionV3.model.Bid;
+import com.stanfan.StartupAuctionV3.model.NotAWinnerException;
 import com.stanfan.StartupAuctionV3.model.Player;
 import com.stanfan.StartupAuctionV3.model.PlayerDAO;
 
@@ -82,10 +83,26 @@ public class JDBCPlayerDAO implements PlayerDAO {
 		jdbcTemplate.update(sqlSetOwner, ownerId, playerId);
 	}
 	@Override
-	public void addInfoAfterWin(Bid bid) {
+	public void addInfoAfterWin(Bid bid) throws NotAWinnerException {
 		int newSalary = bid.getBidSalary();
 		int newLength = bid.getBidLength();
 		int contractValue = (newLength * 5) + newSalary;
+		int latestBid = 0;
+		String sqlCheckLatestBid = "select bidid from Bidledger where playerid = ? ORDER BY bidid desc limit 1";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(sqlCheckLatestBid, bid.getPlayerId());
+		while (result.next()) {
+			if (result.getInt("bidid") > bid.getBidId()) {
+				throw new NotAWinnerException();
+			}
+		}
+		String sqlCheckIfOwned = "select salary from player where playerid = ?";
+		SqlRowSet ownerResult = jdbcTemplate.queryForRowSet(sqlCheckIfOwned, bid.getPlayerId());
+		while (ownerResult.next()) {
+			if(ownerResult.getInt("salary") > 0) {
+				throw new NotAWinnerException();
+			}
+		}
+		
 		int playerId = bid.getPlayerId();
 		String ownername = bid.getBidder();
 		String sqlPlayerUpdate = "UPDATE player SET ownername = ?, salary = ?, length = ?, contractvalue = ? WHERE playerid = ?";

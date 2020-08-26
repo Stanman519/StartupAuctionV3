@@ -157,11 +157,8 @@ export default {
         });
     }
   },
-  mounted:{
-    inactivity: function() {
-            // now 'this' is referencing the Vue object and not the 'setTimeout' scope
+  mounted: function() {
         setTimeout(this.pushToRoster(), 5000);
-    }
   },
   methods: {
     pushToRoster: function() {

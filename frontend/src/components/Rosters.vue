@@ -95,11 +95,11 @@ export default {
             .then(data => (this.ownerList = data));
         },
         currentUser: function() {
-            if (this.$store.state.auth.user){
-                return this.$store.state.auth.user;
-            }
             if (this.$store.state.jwtUser.user){
                 return this.$store.state.jwtUser.user;
+            }
+            if (this.$store.state.auth.user){
+                return this.$store.state.auth.user;
             }
              else {
                 return null;

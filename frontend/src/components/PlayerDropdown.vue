@@ -205,7 +205,7 @@ export default {
       let date =
       today.getFullYear() + "," + today.getUTCMonth() + "," + today.getUTCDate();
       let time =
-        (today.getUTCHours() + 12) +
+        (today.getUTCHours() + 9) +
         "," +
         today.getUTCMinutes() +
         "," +

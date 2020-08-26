@@ -197,7 +197,6 @@ public class AuctionController {
 		b = lotDAO.getBidByLotId(lotId);
 		return b;
 	}
-	@PreAuthorize("isAuthenticated()")
 	@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@RequestMapping(value = "/api/lot/clear/{lotId}", method = RequestMethod.PUT)

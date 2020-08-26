@@ -144,6 +144,7 @@ public class AuctionController {
 	}
 	
 	//add owner to player when lot is won
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(path = "/api/win/player/", method = RequestMethod.PUT)
 	public void winAuction(@RequestBody @PathVariable int playerid, Owner winningOwner) {
 		playerDAO.addOwnerToPlayer(playerid, winningOwner.getOwnerId());
@@ -161,6 +162,7 @@ public class AuctionController {
 	public void updatePlayerAfterWin(@RequestBody Bid bid) {
 		playerDAO.addInfoAfterWin(bid);
 	}
+	@PreAuthorize("isAuthenticated()")
 	@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@RequestMapping(path = "/api/win/owner", method = RequestMethod.PUT)
@@ -197,6 +199,7 @@ public class AuctionController {
 		b = lotDAO.getBidByLotId(lotId);
 		return b;
 	}
+	@PreAuthorize("isAuthenticated()")
 	@CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@RequestMapping(value = "/api/lot/clear/{lotId}", method = RequestMethod.PUT)

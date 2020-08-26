@@ -154,11 +154,14 @@ export default {
           if (!this.currentUser.user.ownerName) {
             this.$router.push("/login");
           }
-        });
+        })
+        .then(() => {
+          setTimeout(this.pushToRoster(), 7000);
+        })
     }
   },
   mounted: function() {
-        setTimeout(this.pushToRoster(), 5000);
+        
   },
   methods: {
     pushToRoster: function() {

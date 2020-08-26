@@ -157,16 +157,12 @@ export default {
         });
     }
   },
-  // mounted: {
-  //   assertLogin: function() {
-  //     if(localStorage.user){
-  //         this.user = localStorage.user;
-  //         }
-  //     if (!this.currentUser){
-  //     this.$router.push('/login');
-  //     }
-  //   }
-  // },
+  mounted:{
+    inactivity: function() {
+            // now 'this' is referencing the Vue object and not the 'setTimeout' scope
+        setTimeout(() => this.$router.push("/rosters"), 5000);
+    }
+  },
   methods: {
     checkScore: function () {
       this.wins++;

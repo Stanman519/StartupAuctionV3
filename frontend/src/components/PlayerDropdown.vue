@@ -436,7 +436,7 @@ export default {
       };
       fetch(this.url + "api/win/player", requestOptions)
         .then((response) =>{
-          if(response.status < 299 ){
+          if(response.status > 299 ){
             location.reload();
           } else {
         fetch(this.url + "api/win/owner", secondRequestOption).then(() => {

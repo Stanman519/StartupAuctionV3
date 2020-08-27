@@ -102,10 +102,98 @@
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
       <PlayerDropdown
-        nommer="Test"
+        nommer="A.Aron"
         lotId="13"
         class="lotStyle"
         id="lot13"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Caleb"
+        lotId="14"
+        class="lotStyle"
+        id="lot14"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Cory"
+        lotId="15"
+        class="lotStyle"
+        id="lot15"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Jeri"
+        lotId="16"
+        class="lotStyle"
+        id="lot16"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Juan"
+        lotId="17"
+        class="lotStyle"
+        id="lot17"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Levi"
+        lotId="18"
+        class="lotStyle"
+        id="lot18"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Logan"
+        lotId="19"
+        class="lotStyle"
+        id="lot19"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Ryan"
+        lotId="20"
+        class="lotStyle"
+        id="lot20"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Taylor"
+        lotId="21"
+        class="lotStyle"
+        id="lot21"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Trent"
+        lotId="22"
+        class="lotStyle"
+        id="lot22"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="TBux"
+        lotId="23"
+        class="lotStyle"
+        id="lot23"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="TWelsh"
+        lotId="24"
+        class="lotStyle"
+        id="lot24"
         v-bind:ownerList="this.owners"
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
@@ -246,10 +334,45 @@ export default {
 }
 #lot12 {
   grid-area: lot12;
-  margin-bottom: 35px;
 }
 #lot13 {
   grid-area: lot13;
+}
+#lot14 {
+  grid-area: lot14;
+}
+#lot15 {
+  grid-area: lot15;
+}
+#lot16 {
+  grid-area: lot16;
+}
+#lot17 {
+  grid-area: lot17;
+}
+#lot18 {
+  grid-area: lot18;
+}
+#lot19 {
+  grid-area: lot19;
+}
+#lot20 {
+  grid-area: lot20;
+}
+#lot21 {
+  grid-area: lot21;
+}
+#lot22 {
+  grid-area: lot22;
+  margin-bottom: 35px;
+}
+#lot23 {
+  grid-area: lot23;
+  margin-bottom: 35px;
+}
+#lot24{
+  grid-area: lot24;
+  margin-bottom: 35px;
 }
 #budget-board {
   grid-area: bb;
@@ -301,8 +424,19 @@ export default {
       " lot9 "
       " lot10 "
       " lot11 "
-      "lot12 "
-      "lot13";
+      " lot12 "
+      " lot13 "
+      " lot14 "
+      " lot15 "
+      " lot16 "
+      " lot17 "
+      " lot18 "
+      " lot19 "
+      " lot20 "
+      " lot21 "
+      " lot22 "
+      " lot23 "
+      " lot24 ";
     grid-gap: 35px;
   }
 }
@@ -311,16 +445,18 @@ export default {
     margin-right: 35px;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      " bb my-id . . ."
-      " bb lot1 lot1 lot2 lot2"
-      " bb lot3 lot3 lot4 lot4"
-      " . lot5 lot5 lot6 lot6"
-      " . lot7 lot7 lot8 lot8"
-      " . lot9 lot9 lot10 lot10"
-      " . lot11 lot11 lot12 lot12"
-      " lot13 . . . . ";
+      " bb my-id . "
+      " bb lot1 lot2"
+      " bb lot3 lot4"
+      " lot5 lot6 lot7"
+      " lot8 lot9 lot10"
+      " lot11 lot12 lot13"
+      " lot14 lot15 lot16"
+      " lot17 lot18 lot 19"
+      " lot20 lot21 lot22"
+      " lot23 lot24 . ";
     grid-gap: 35px;
   }
 }

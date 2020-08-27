@@ -330,7 +330,6 @@ export default {
 }
 #lot11 {
   grid-area: lot11;
-  margin-bottom: 35px;
 }
 #lot12 {
   grid-area: lot12;
@@ -448,14 +447,14 @@ export default {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
       " bb my-id . "
-      " bb lot1 lot2"
-      " bb lot3 lot4"
-      " lot5 lot6 lot7"
-      " lot8 lot9 lot10"
-      " lot11 lot12 lot13"
-      " lot14 lot15 lot16"
-      " lot17 lot18 lot 19"
-      " lot20 lot21 lot22"
+      " bb lot1 lot2 "
+      " bb lot3 lot4 "
+      " lot5 lot6 lot7 "
+      " lot8 lot9 lot10 "
+      " lot11 lot12 lot13 "
+      " lot14 lot15 lot16 "
+      " lot17 lot18 lot19 "
+      " lot20 lot21 lot22 "
       " lot23 lot24 . ";
     grid-gap: 35px;
   }

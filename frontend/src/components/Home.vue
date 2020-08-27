@@ -252,7 +252,7 @@ export default {
           }
         })
         .then(() => {
-          setTimeout(() => this.$router.push("/rosters"), 180000);
+          setTimeout(() => this.$router.push("/rosters"), 360000);
         })
     }
   },

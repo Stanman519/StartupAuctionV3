@@ -101,6 +101,14 @@
         v-bind:ownerList="this.owners"
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
+      <PlayerDropdown
+        nommer="Test"
+        lotId="13"
+        class="lotStyle"
+        id="lot13"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
     </div>
   </div>
 </template>
@@ -240,6 +248,9 @@ export default {
   grid-area: lot12;
   margin-bottom: 35px;
 }
+#lot13 {
+  grid-area: lot13;
+}
 #budget-board {
   grid-area: bb;
   padding: 5px;
@@ -290,7 +301,8 @@ export default {
       " lot9 "
       " lot10 "
       " lot11 "
-      "lot12 ";
+      "lot12 "
+      "lot13";
     grid-gap: 35px;
   }
 }
@@ -307,7 +319,8 @@ export default {
       " . lot5 lot5 lot6 lot6"
       " . lot7 lot7 lot8 lot8"
       " . lot9 lot9 lot10 lot10"
-      " . lot11 lot11 lot12 lot12";
+      " . lot11 lot11 lot12 lot12"
+      " lot13 . . . . ";
     grid-gap: 35px;
   }
 }

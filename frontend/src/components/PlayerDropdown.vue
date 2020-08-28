@@ -28,7 +28,7 @@
                       <p> Passes: {{ passes }}/11 </p>
                   </b-col>
                   <b-col>
-                      <b-dropdown id="dropdown-right" size="sm" right text="Passers" variant="outline-primary" class="m-2">
+                      <b-dropdown id="dropdown-right" size="sm" right text="Passers" variant="outline-primary" class="m-2" v-show="passers.length>0">
                         <b-dropdown-item v-for="passer in passers" :key="passer-id" href="#"> {{ passer }} </b-dropdown-item>
                       </b-dropdown>
                   </b-col>

@@ -124,7 +124,19 @@ public class JDBCPlayerDAO implements PlayerDAO {
 		}
 		return availableByPosition;
 	}
-	
+	@Override
+	public List<Player> getAllDraftedPlayers(){
+		List<Player> playersOnTeams = new ArrayList<Player>();
+		String sqlPlayersOnTeam = "SELECT playerId, espnId, ownerId, firstname, lastname, position, salary, length, contractvalue, ownername " +
+								  "FROM player " +
+								  "WHERE ownername IS NOT NULL";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlPlayersOnTeam);
+		while(results.next()) {
+			Player player = mapRowToPlayer(results);
+			playersOnTeams.add(player);
+		}
+		return playersOnTeams;
+	}
 	
 	public Player mapRowToPlayer(SqlRowSet rs) {
 		Player p = new Player();
@@ -142,7 +154,6 @@ public class JDBCPlayerDAO implements PlayerDAO {
 		
 	}
 	
-
 	
 	private int getNextPlayerId() {
 		SqlRowSet nextId = jdbcTemplate.queryForRowSet("SELECT nextval('player_playerid_seq')");

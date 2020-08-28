@@ -1,24 +1,11 @@
 <template>
   <div>
     <b-container fluid class="table-page">
-        <div>
-          <b-container fluid class="team-select-row">
-            <p> Players on roster: {{ rosterSize }} / 25 </p>
-            <span> Select another team: &nbsp; &nbsp; </span>   
-            
-            <b-form-select class="col-sm-4" id="ownerSelector" v-model="selectedOwnerName" @change="showARoster">
-                <b-form-select-option v-for="owner in ownerList" :key="owner.ownerId" :value="owner.ownerName"> 
-                    {{ owner.ownerName }} </b-form-select-option>
-            </b-form-select>
-          </b-container>
-        </div>
-            <div id="table"> 
+        <div id="table"> 
             <b-table striped hover :items="playerList" :fields="rows">
             </b-table>
         </div>
-        <div>
-            Total Salary: {{ salaryTotal }}
-        </div>
+
     </b-container>
   </div>
 </template>
@@ -33,9 +20,13 @@ export default {
         return {
             ownerList: [],
             playerList: [],
-            selectedOwnerName: '',
             url: '/',
             rows: [
+                {
+                    key: 'ownerName',
+                    label: 'Owner',
+                    sortable: true
+                },
                 {
                     key: 'firstName',
                     label: 'First Name',
@@ -65,6 +56,11 @@ export default {
                     key: 'contractValue',
                     label: 'Contract Value',
                     sortable: true
+                },
+                {
+                    key: 'salary' * 0.4,
+                    label: 'Dead Cap if Cut',
+                    sortable: true
                 }
             ]
         }
@@ -73,26 +69,12 @@ export default {
 
     },
     methods: {
-        showMyRoster(){
-            fetch(this.url + 'api/team/' + this.currentUser.user.ownerName, {
-                method: 'GET'
-            })
-            .then(response => response.json())
-            .then(data => (this.playerList = data));
-        },
-        showARoster(){
-            fetch(this.url + 'api/team/' + this.selectedOwnerName, {
-                method: 'GET'
-            })
-            .then(response => response.json())
-            .then(data => (this.playerList = data));
-        },
-        getOwnerList: function() {
-           fetch(this.url + 'api/owner/scoreboard/', {
+        getPlayerList: function() {
+           fetch(this.url + 'api/players/drafted', {
                method: 'GET'
            })
             .then(response => response.json())
-            .then(data => (this.ownerList = data));
+            .then(data => (this.playerList = data));
         },
         currentUser: function() {
             if (this.$store.state.jwtUser.user){
@@ -107,21 +89,9 @@ export default {
         }
     },
     mounted: function() {
-        this.showMyRoster();
-        this.getOwnerList();
-    },
-    computed: {
-        rosterSize: function(){
-            return this.playerList.length;
-        },
-        salaryTotal: function(){
-            let x = 0;
-            this.playerList.forEach((player) => {
-                x += player.salary
-            })
-            return x;
-        }
+        this.getPlayerList();
     }
+
 }
 
 

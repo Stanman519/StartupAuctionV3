@@ -257,6 +257,11 @@ public class AuctionController {
 		return ownerDAO.getPassesById(playerId);
 	}
 	
+	@RequestMapping(path = "api/players/drafted", method = RequestMethod.GET)
+	public List<Player> getDraftedPlayers(){
+		return playerDAO.getAllDraftedPlayers();
+	}
+	
     /**
      * Object to return as body in JWT Authentication.
      */

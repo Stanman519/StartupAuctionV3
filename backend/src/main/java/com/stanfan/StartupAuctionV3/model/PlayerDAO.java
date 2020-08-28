@@ -16,4 +16,6 @@ public interface PlayerDAO {
 	public List<Player> getAllPlayers();
 	public Player getPlayerById(int id);
 	public void addInfoAfterWin(Bid bid);
+
+	public List<Player> getAllDraftedPlayers();
 }

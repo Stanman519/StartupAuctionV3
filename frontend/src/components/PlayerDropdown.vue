@@ -24,10 +24,14 @@
                     </b-col>
                 </b-row>
                 <b-row>
-                    <p> Contract Value: {{ newBidCV }}/{{ highestBidCV }}  </p>
-                </b-row>
-                <b-row>
-                    <p> Passes: {{ passes }}/11 </p>
+                  <b-col>
+                      <p> Passes: {{ passes }}/11 </p>
+                  </b-col>
+                  <b-col>
+                      <b-dropdown id="dropdown-right" right text="Passers" variant="primary" class="m-2">
+                        <b-dropdown-item v-for="passer in passers" :key="passer"></b-dropdown-item>
+                      </b-dropdown>
+                  </b-col>
                 </b-row>
             </b-container>
         </div>
@@ -50,8 +54,13 @@
         </div>
         <b-container fluid>
             <b-row class="salaryRow">
-                    <span style="margin-right:2em"> Salary per season:  &nbsp; &nbsp;        </span>
-                <input id ="salarySelector" type="number" v-model.number="salaryInput" :min="1" :max="500" />
+                <b-col>
+                  <span style="margin-right:2em"> Salary per season:  &nbsp; </span>
+                  <input id ="salarySelector" type="number" v-model.number="salaryInput" :min="1" :max="500" />
+                <b-col>
+                <b-col>
+                  <span> Contract Value: {{ newBidCV }}/{{ highestBidCV }}  </span>
+                </b-col>
             </b-row>
             <b-row class="lengthRow">
                 <b-form-select id="lengthSelector" v-model="lengthInput" class="mb-3">
@@ -67,7 +76,7 @@
         
         <b-container>
             <b-row id="button-row">
-                    <b-button v-show="!userHasPassed" variant="outline-primary" v-bind:disabled="!nomFormIsValid" @click="submitNomination">Nominate</b-button>
+                    <b-button v-show="!userHasPassed" variant="primary" v-bind:disabled="!nomFormIsValid" @click="submitNomination">Nominate</b-button>
                     <b-button v-show="!userHasPassed" variant="danger" v-bind:disabled="!bidFormIsValid" @click="submitBid">Bid</b-button>
                     <b-button v-show="!userHasPassed" v-bind:disabled="!iCanPass" @click="passOnPlayer">Pass</b-button>
             </b-row>

@@ -74,7 +74,7 @@ export default {
     },
     methods: {
         showMyRoster(){
-            fetch(this.url + 'api/team/' + this.currentUser.user.ownerName, {
+            fetch(this.url + 'api/team/' + this.currentUser.ownerName, {
                 method: 'GET'
             })
             .then(response => response.json())

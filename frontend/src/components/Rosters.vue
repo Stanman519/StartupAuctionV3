@@ -3,7 +3,17 @@
     <b-container fluid class="table-page">
         <div>
           <b-container fluid class="team-select-row">
-            <p> Players on roster: {{ rosterSize }} / 25 </p>
+              <b-row>
+                  <b-col>
+                    <p> Players on roster: <strong>{{ rosterSize }}/25 </strong></p>
+                  </b-col>
+                  <b-col>
+                      <p> Years used: <strong>{{yearTotal}}/75</strong></p>
+                  </b-col>
+                  <b-col>
+                      <p> Avg remaining contract AT MAX SALARY CAP AND YEARS: <strong> ${{ avgRemainingSalary }}, {{ avgRemainingYears }} years </strong></p>
+                  </b-col>
+              </b-row>
             <span> Select another team: &nbsp; &nbsp; </span>   
             
             <b-form-select class="col-sm-4" id="ownerSelector" v-model="selectedOwnerName" @change="showARoster">
@@ -95,13 +105,12 @@ export default {
             .then(data => (this.ownerList = data));
         },
         currentUser: function() {
-            if (this.$store.state.jwtUser.user){
-                return this.$store.state.jwtUser.user;
-            }
             if (this.$store.state.auth.user){
                 return this.$store.state.auth.user;
             }
-             else {
+            else if (this.$store.state.jwtUser.user){
+                return this.$store.state.jwtUser.user;
+            } else {
                 return null;
             }
         }
@@ -120,6 +129,19 @@ export default {
                 x += player.salary
             })
             return x;
+        },
+        yearTotal: function(){
+            let x=0;
+            this.playerList.forEach((player) => {
+                x += player.length;
+            })
+            return x;
+        },
+        avgRemainingSalary: function() {
+            return (500 - this.salaryTotal) / (25 - this.rosterSize);
+        },
+        avgRemainingYears: function(){
+            return (75 - this.yearTotal) / (25 - this.rosterSize);
         }
     }
 }

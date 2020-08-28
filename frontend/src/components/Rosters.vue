@@ -138,10 +138,12 @@ export default {
             return x;
         },
         avgRemainingSalary: function() {
-            return (500 - this.salaryTotal) / (25 - this.rosterSize);
+            let x = (500 - this.salaryTotal) / (25 - this.rosterSize);
+            return x.toFixed(2);
         },
         avgRemainingYears: function(){
-            return (75 - this.yearTotal) / (25 - this.rosterSize);
+            let x = (75 - this.yearTotal) / (25 - this.rosterSize);
+            return x.toFixed(2);
         }
     }
 }

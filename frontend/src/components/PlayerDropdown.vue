@@ -57,7 +57,7 @@
                 <b-col>
                   <span style="margin-right:2em"> Salary per season:  &nbsp; </span>
                   <input id ="salarySelector" type="number" v-model.number="salaryInput" :min="1" :max="500" />
-                <b-col>
+                </b-col>
                 <b-col>
                   <span> Contract Value: {{ newBidCV }}/{{ highestBidCV }}  </span>
                 </b-col>

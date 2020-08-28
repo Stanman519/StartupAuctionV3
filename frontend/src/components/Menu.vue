@@ -20,7 +20,7 @@
            <b-nav-item><router-link to="/login">Log in</router-link></b-nav-item>
 
           <b-nav-item><router-link to="/notes">Information</router-link></b-nav-item>
-
+          <b-nav-item><router-link to="/drafted">All Drafted Players</router-link></b-nav-item>
 
       </b-navbar-nav>
     </b-collapse>

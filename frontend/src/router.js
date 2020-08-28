@@ -5,6 +5,7 @@ import Register from './components/Register.vue';
 import Home from './components/Home.vue';
 import Rosters from './components/Rosters.vue';
 import Notes from './components/Notes.vue';
+import AllPlayers from './components/AllPlayers.vue';
 
 Vue.use(Router);
 
@@ -37,6 +38,11 @@ export const router = new Router({
     {
       path: '/notes',
       component: Notes
+    },
+    {
+      path: '/drafted',
+      name: 'drafted',
+      component: AllPlayers
     },
     { path: '*', redirect: '/' }
     // {

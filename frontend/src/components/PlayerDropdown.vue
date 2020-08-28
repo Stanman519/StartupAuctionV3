@@ -29,7 +29,7 @@
                   </b-col>
                   <b-col>
                       <b-dropdown id="dropdown-right" size="sm" right text="Passers" variant="outline-primary" class="m-2">
-                        <b-dropdown-item v-for="passer in passers" :key="passer-id"></b-dropdown-item>
+                        <b-dropdown-item v-for="passer in passers" :key="passer-id" href="#"> {{ passer }} </b-dropdown-item>
                       </b-dropdown>
                   </b-col>
                 </b-row>
@@ -511,7 +511,7 @@ export default {
 #player-title {
   font-family: "Franklin Gothic Medium", "Franklin Gothic",
     "ITC Franklin Gothic", Arial, sans-serif;
-  font-size: 32px;
+  font-size: 27px;
   font-style: normal;
   font-variant: normal;
   font-weight: 700;

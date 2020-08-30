@@ -197,6 +197,38 @@
         v-bind:ownerList="this.owners"
         v-bind:currentUser="this.currentUser"
       ></PlayerDropdown>
+            <PlayerDropdown
+        nommer="admin"
+        lotId="25"
+        class="lotStyle"
+        id="lot25"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+            <PlayerDropdown
+        nommer="admin"
+        lotId="26"
+        class="lotStyle"
+        id="lot26"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+            <PlayerDropdown
+        nommer="admin"
+        lotId="27"
+        class="lotStyle"
+        id="lot27"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
+            <PlayerDropdown
+        nommer="TWeladminsh"
+        lotId="28"
+        class="lotStyle"
+        id="lot28"
+        v-bind:ownerList="this.owners"
+        v-bind:currentUser="this.currentUser"
+      ></PlayerDropdown>
     </div>
   </div>
 </template>
@@ -363,14 +395,26 @@ export default {
 }
 #lot22 {
   grid-area: lot22;
-  margin-bottom: 35px;
 }
 #lot23 {
   grid-area: lot23;
-  margin-bottom: 35px;
 }
 #lot24{
   grid-area: lot24;
+}
+#lot25 {
+  grid-area: lot25;
+}
+#lot26 {
+  grid-area: lot26;
+  margin-bottom: 35px;
+}
+#lot27 {
+  grid-area: lot27;
+  margin-bottom: 35px;
+}
+#lot28 {
+  grid-area: lot28;
   margin-bottom: 35px;
 }
 #budget-board {
@@ -435,7 +479,11 @@ export default {
       " lot21 "
       " lot22 "
       " lot23 "
-      " lot24 ";
+      " lot24 "
+      " lot25 "
+      " lot26 "
+      " lot27 "
+      " lot28 ";
     grid-gap: 35px;
   }
 }
@@ -455,7 +503,8 @@ export default {
       " lot14 lot15 lot16 "
       " lot17 lot18 lot19 "
       " lot20 lot21 lot22 "
-      " lot23 lot24 . ";
+      " lot23 lot24 lot25 "
+      " lot26 lot27 lot28 ";
     grid-gap: 35px;
   }
 }

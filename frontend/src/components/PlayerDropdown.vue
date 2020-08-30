@@ -316,7 +316,7 @@ export default {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${this.$cookies.get("token")}`
+         // Authorization: `Bearer ${this.$cookies.get("token")}`
         },
         body: JSON.stringify({
           playerId: this.selectedPlayerId,

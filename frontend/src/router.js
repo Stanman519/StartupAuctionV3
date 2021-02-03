@@ -6,6 +6,7 @@ import Home from './components/Home.vue';
 import Rosters from './components/Rosters.vue';
 import Notes from './components/Notes.vue';
 import AllPlayers from './components/AllPlayers.vue';
+import Inventory from './components/Inventory.vue';
 
 Vue.use(Router);
 

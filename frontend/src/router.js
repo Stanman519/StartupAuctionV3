@@ -44,6 +44,11 @@ export const router = new Router({
       name: 'drafted',
       component: AllPlayers
     },
+    {
+      path: '/inventory',
+      name: 'inventory',
+      component: Inventory
+    },
     { path: '*', redirect: '/' }
     // {
     //   path: '/profile',

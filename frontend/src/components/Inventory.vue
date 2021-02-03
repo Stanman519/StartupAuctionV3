@@ -4,6 +4,7 @@
 
 <script>
 export default {
+    name: 'Inventory',
     mounted: function() {
         fetch("/api/inventory", {
             method: "GET"

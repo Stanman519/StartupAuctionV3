@@ -106,7 +106,6 @@ export default {
         return response.json();
       })
       .then(data => {
-        console.log(data);
         this.bid = data;
         this.currentBid = this.bid;
         this.dressLot();
@@ -269,8 +268,6 @@ export default {
       }
     },
     lookupPlayer: function() {
-      console.log("are we getting here");
-      console.log(this.lotIdNum);
       fetch(this.url + "api/players/" + this.selectedPlayerId, {
         method: "GET"
       })
@@ -278,8 +275,6 @@ export default {
         .then(data => (this.selectedPlayer = data));
     },
     lookupPos: function() {
-      console.log(this.currentUser.user.ownerName);
-      console.log(this.currentUser.user.capRoom);
       fetch(this.url + "api/position/" + this.selectedPos, {
         method: "get"
       })

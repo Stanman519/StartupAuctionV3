@@ -2,6 +2,8 @@ package com.stanfan.StartupAuctionV3.controller;
 
 import java.security.Principal;
 import java.util.List;
+
+import com.stanfan.StartupAuctionV3.InventoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -53,6 +55,7 @@ public class AuctionController {
 	private BidDAO bidDAO;
 	private LotDAO lotDAO;
 	private static final Logger LOG = LoggerFactory.getLogger(AuctionController.class);
+
 	
 	public AuctionController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, 
 			PlayerDAO playerDAO, OwnerDAO ownerDAO, BidDAO bidDAO, LotDAO lotDAO) {
@@ -103,6 +106,13 @@ public class AuctionController {
             ownerDAO.create(newUser.getUsername(),newUser.getPassword());
         }
     }
+
+	@RequestMapping(value = "api/inventory", method = RequestMethod.GET)
+	public void buildInventory() {
+		InventoryService serv = new InventoryService();
+		serv.buildInventory();
+	}
+
 	//not actually sure what this is for.
 	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "api/test/user", method = RequestMethod.GET)

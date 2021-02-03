@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import com.stanfan.StartupAuctionV3.InventoryService;
+import com.stanfan.StartupAuctionV3.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -24,20 +25,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.stanfan.StartupAuctionV3.model.Bid;
-import com.stanfan.StartupAuctionV3.model.BidDAO;
-import com.stanfan.StartupAuctionV3.model.IllegalBidException;
-import com.stanfan.StartupAuctionV3.model.LoginDTO;
-import com.stanfan.StartupAuctionV3.model.Lot;
-import com.stanfan.StartupAuctionV3.model.LotDAO;
-import com.stanfan.StartupAuctionV3.model.NotAWinnerException;
-import com.stanfan.StartupAuctionV3.model.Owner;
-import com.stanfan.StartupAuctionV3.model.OwnerDAO;
-import com.stanfan.StartupAuctionV3.model.Pass;
-import com.stanfan.StartupAuctionV3.model.Player;
-import com.stanfan.StartupAuctionV3.model.PlayerDAO;
-import com.stanfan.StartupAuctionV3.model.RegisterUserDTO;
-import com.stanfan.StartupAuctionV3.model.UserAlreadyExistsException;
 import com.stanfan.StartupAuctionV3.security.jwt.JWTFilter;
 import com.stanfan.StartupAuctionV3.security.jwt.TokenProvider;
 
@@ -55,7 +42,7 @@ public class AuctionController {
 	private BidDAO bidDAO;
 	private LotDAO lotDAO;
 	private static final Logger LOG = LoggerFactory.getLogger(AuctionController.class);
-
+	InventoryService serv = new InventoryService();
 	
 	public AuctionController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, 
 			PlayerDAO playerDAO, OwnerDAO ownerDAO, BidDAO bidDAO, LotDAO lotDAO) {
@@ -109,8 +96,15 @@ public class AuctionController {
 
 	@RequestMapping(value = "api/inventory", method = RequestMethod.GET)
 	public void buildInventory() {
-		InventoryService serv = new InventoryService();
-		serv.buildInventory();
+		MflPlayer[] mflPlayers = serv.getAllFreeAgents();
+		for (MflPlayer player : mflPlayers) {
+			String firstName = player.getName();
+			String lastName = " ";
+			int espnId = Integer.parseInt(player.getId());
+			String position = player.getPosition();
+			Player thisPlayer = new Player(espnId, firstName, lastName, position);
+			playerDAO.insertPlayer(thisPlayer);
+		}
 	}
 
 	//not actually sure what this is for.

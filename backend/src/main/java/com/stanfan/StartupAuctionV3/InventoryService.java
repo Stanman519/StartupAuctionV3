@@ -22,31 +22,34 @@ public class InventoryService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<Player> uselessCode = enterFreeAgentInventory(freeAgents);
+        try {
+            enterFreeAgentInventory(freeAgents);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
     public MflPlayer[] getAllFreeAgents() {
         ResponseEntity<MflPlayer[]> response = restTemplate.getForEntity(mflUrl, MflPlayer[].class);
         MflPlayer[] playerInventory = response.getBody();
+        System.out.println("Array created.");
         return playerInventory;
     }
 
-    public List<Player> enterFreeAgentInventory(MflPlayer[] freeAgents) {
+    public void enterFreeAgentInventory(MflPlayer[] freeAgents) {
         List<Player> ourPlayers = new ArrayList<Player>();
 
         for (MflPlayer player : freeAgents) {
-
             String firstName = player.getName();
-            String lastName = "";
+            String lastName = "x";
             int espnId = Integer.parseInt(player.getId());
             String position = player.getPosition();
             Player thisPlayer = new Player(espnId, firstName, lastName, position);
-            if(!playerDAO.playerAlreadyListed(thisPlayer.getEspnId())) {
+           // if(!playerDAO.playerAlreadyListed(thisPlayer.getEspnId())) {
                 thisPlayer = playerDAO.insertPlayer(thisPlayer);
                 System.out.println("made a player..." + thisPlayer.getFirstName() + " " + thisPlayer.getLastName() + " " + thisPlayer.getPosition());
                 ourPlayers.add(thisPlayer);
-            }
+
         }
         System.out.println("done building inventory.");
-        return ourPlayers;
     }
 }

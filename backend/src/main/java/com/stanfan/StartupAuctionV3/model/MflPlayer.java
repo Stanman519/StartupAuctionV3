@@ -5,7 +5,6 @@ public class MflPlayer {
     private String id;
     private String weight;
     private String height;
-    private String adp;
     private int age;
     private String dob;
     private String team;
@@ -34,12 +33,6 @@ public class MflPlayer {
     }
     public void setHeight(String height) {
         this.height = height;
-    }
-    public String getAdp() {
-        return adp;
-    }
-    public void setAdp(String adp) {
-        this.adp = adp;
     }
     public int getAge() {
         return age;

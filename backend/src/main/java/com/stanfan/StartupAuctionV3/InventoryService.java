@@ -11,7 +11,7 @@ import java.util.List;
 
 public class InventoryService {
 
-    private final String mflUrl = "https://ryan-passion-project.apps.vn01.pcf.dcsg.com/Mfl/currentFreeAgents/2020";
+    private final String mflUrl = "https://mfl-capn.herokuapp.com/Mfl/currentFreeAgents/2020";
     private PlayerDAO playerDAO;
     RestTemplate restTemplate = new RestTemplate();
 
@@ -29,6 +29,7 @@ public class InventoryService {
         }
     }
     public MflPlayer[] getAllFreeAgents() {
+
         ResponseEntity<MflPlayer[]> response = restTemplate.getForEntity(mflUrl, MflPlayer[].class);
         MflPlayer[] playerInventory = response.getBody();
         System.out.println("Array created.");

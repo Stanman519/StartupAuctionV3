@@ -103,7 +103,9 @@ public class AuctionController {
 			int espnId = Integer.parseInt(player.getId());
 			String position = player.getPosition();
 			Player thisPlayer = new Player(espnId, firstName, lastName, position);
-			playerDAO.insertPlayer(thisPlayer);
+			if(!playerDAO.playerAlreadyListed(thisPlayer.getEspnId())) {
+				playerDAO.insertPlayer(thisPlayer);
+			}
 		}
 	}
 

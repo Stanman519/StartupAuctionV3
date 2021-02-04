@@ -45,12 +45,10 @@ public class InventoryService {
             int espnId = Integer.parseInt(player.getId());
             String position = player.getPosition();
             Player thisPlayer = new Player(espnId, firstName, lastName, position);
-           // if(!playerDAO.playerAlreadyListed(thisPlayer.getEspnId())) {
+            if(!playerDAO.playerAlreadyListed(thisPlayer.getEspnId())) {
                 thisPlayer = playerDAO.insertPlayer(thisPlayer);
-                System.out.println("made a player..." + thisPlayer.getFirstName() + " " + thisPlayer.getLastName() + " " + thisPlayer.getPosition());
                 ourPlayers.add(thisPlayer);
-
+            }
         }
-        System.out.println("done building inventory.");
     }
 }

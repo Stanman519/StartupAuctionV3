@@ -60,9 +60,11 @@ public class JDBCPlayerDAO implements PlayerDAO {
 	}
 	
 	public boolean playerAlreadyListed(int id) {
-		String sqlCheckForPlayer = "SELECT espnId FROM player WHERE espnId = ?";
+		boolean exists = false;
+		String sqlCheckForPlayer = "SELECT count(*) FROM player WHERE espnId = ?";
 		int count = jdbcTemplate.queryForObject(sqlCheckForPlayer, new Object[] {id}, Integer.class);
-		return count > 0;
+		exists = count > 0;
+		return exists;
 	}
 	@Override
 	public List<Player> getAllPlayersOnTeam(String ownerName){

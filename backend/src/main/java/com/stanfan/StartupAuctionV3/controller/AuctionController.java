@@ -2,7 +2,6 @@ package com.stanfan.StartupAuctionV3.controller;
 
 import java.security.Principal;
 import java.util.List;
-
 import com.stanfan.StartupAuctionV3.InventoryService;
 import com.stanfan.StartupAuctionV3.model.*;
 import org.slf4j.Logger;
@@ -27,9 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stanfan.StartupAuctionV3.security.jwt.JWTFilter;
 import com.stanfan.StartupAuctionV3.security.jwt.TokenProvider;
-
-
-
 
 
 @CrossOrigin(origins = "http://localhost:8081", allowedHeaders = "*")
@@ -98,8 +94,9 @@ public class AuctionController {
 	public void buildInventory() {
 		MflPlayer[] mflPlayers = serv.getAllFreeAgents();
 		for (MflPlayer player : mflPlayers) {
-			String firstName = player.getName();
-			String lastName = " ";
+			String[] names = player.getName().split(" ");
+			String firstName = names[0];
+			String lastName = names[names.length - 1];
 			int espnId = Integer.parseInt(player.getId());
 			String position = player.getPosition();
 			Player thisPlayer = new Player(espnId, firstName, lastName, position);

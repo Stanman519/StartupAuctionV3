@@ -11,7 +11,7 @@ import java.util.List;
 
 public class InventoryService {
 
-    private final String mflUrl = "https://mfl-capn.herokuapp.com/Mfl/currentFreeAgents/2020";
+    private final String mflUrl = "https://mfl-capn.herokuapp.com/Mfl/currentFreeAgents/2021";
     private PlayerDAO playerDAO;
     RestTemplate restTemplate = new RestTemplate();
 
